@@ -1,0 +1,21 @@
+{
+    "manifest_version" : 2,
+    "name" : "extension",
+    "version" : "0.1.0",
+    "description": "ふがふが",
+    "icons" : {
+        "128" : "icon128.png"
+    },
+    "browser_action" : {
+        "default_icon" : {
+            "128" : "icon128.png"
+        },
+        "default_title" : "hoge",
+        "default_popup" : "popup.html"
+    },
+    "permissions" : ["contextMenus", "storage", "tabs", "clipboardRead", "clipboardWrite"],
+    "background" : {
+        "scripts" : ["background.js"],
+        "persistent" : false
+    }
+}
