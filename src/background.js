@@ -9,9 +9,9 @@ chrome.runtime.onInstalled.addListener(() => {
 
     //子メニュー
     const childId = chrome.contextMenus.create({
-        title : "切り替え",
+        title : "test",
         id : "child",
-        type : "checkbox",
+        type : "normal",
         contexts : ["all"],
         parentId : "parent"
     });
@@ -34,7 +34,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
         const selected = info.selectionText;
         if(selected != null){
             console.log(selected);
-            navigator.clipboard.writeText(selected);
+            navigator.clipboard.writeText("selected");
             chrome.storage.local.set({"selected" : selected});
         }
 
@@ -63,7 +63,10 @@ chrome.contextMenus.onClicked.addListener((info) => {
     }
     if(info.menuItemId == "clipped"){
         chrome.storage.local.get("clipped", (data) => {
-            console.log(data);
+            console.log(data.selected);
         });
+    }
+    if(info.menuItemId == "child"){
+        navigator.clipboard.writeText("test");
     }
 });
